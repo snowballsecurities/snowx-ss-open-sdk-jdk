@@ -207,7 +207,8 @@ public class Client {
                 _lastRequest = request_;
                 TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
-                java.util.Map<String, Object> result = this._handle(response_);
+                this._handle(response_);
+                java.util.Map<String, Object> result = com.aliyun.teautil.Common.assertAsMap(com.aliyun.teautil.Common.readAsJSON(response_.body));
                 java.util.Map<String, Object> resultData = com.aliyun.teautil.Common.assertAsMap(result.get("result_data"));
                 this._auth = com.aliyun.teautil.Common.assertAsString(resultData.get("access_token"));
                 return TeaModel.toModel(TeaConverter.merge(Object.class,
@@ -253,7 +254,9 @@ public class Client {
             ));
         }
 
-        return result;
+        return TeaConverter.merge(Object.class,
+            result
+        );
     }
 
     /**
