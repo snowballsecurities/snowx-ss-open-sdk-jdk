@@ -155,7 +155,7 @@ public class Client {
                 }
 
                 request_.query = com.aliyun.teautil.Common.stringifyMapValue(TeaModel.buildMap(query));
-                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(body));
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(com.aliyun.teautil.Common.toMap(body)));
                 _lastRequest = request_;
                 TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
