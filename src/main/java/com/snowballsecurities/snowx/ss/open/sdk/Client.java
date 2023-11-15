@@ -203,7 +203,7 @@ public class Client {
                     new TeaPair("accept", "application/json"),
                     new TeaPair("content-type", "application/json; charset=utf-8")
                 );
-                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(body));
+                request_.body = Tea.toReadable(com.aliyun.teautil.Common.toJSONString(com.aliyun.teautil.Common.toMap(body)));
                 _lastRequest = request_;
                 TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
