@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.snowballsecurities</groupId>
-  <artifactId>snowx-ss-open-sdk-jdk:</artifactId>
+  <artifactId>snowx-ss-jdk:</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <name>snowx-ss-open-sdk-jdk:</name>
+  <name>snowx-ss-jdk:</name>
   <description>Java SDK for Snowball X
     </description>
   <url>https://github.com/snowballsecurities/snowx-ss-open-sdk-jdk</url>
