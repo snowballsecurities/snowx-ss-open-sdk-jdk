@@ -207,8 +207,22 @@ public class Client {
                 _lastRequest = request_;
                 TeaResponse response_ = Tea.doAction(request_, runtime_, interceptorChain);
 
-                this._handle(response_);
                 java.util.Map<String, Object> result = com.aliyun.teautil.Common.assertAsMap(com.aliyun.teautil.Common.readAsJSON(response_.body));
+                if (!com.aliyun.teautil.Common.equalNumber(response_.statusCode, 200)) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("message", "code: " + result.get("result_code") + " reason: " + result.get("msg") + ""),
+                        new TeaPair("code", "" + result.get("result_code") + "")
+                    ));
+                }
+
+                String code = com.aliyun.teautil.Common.assertAsString(result.get("result_code"));
+                if (!com.aliyun.teautil.Common.equalString(code, "60000")) {
+                    throw new TeaException(TeaConverter.buildMap(
+                        new TeaPair("message", "code: " + result.get("result_code") + " reason: " + result.get("msg") + ""),
+                        new TeaPair("code", "" + result.get("result_code") + "")
+                    ));
+                }
+
                 java.util.Map<String, Object> resultData = com.aliyun.teautil.Common.assertAsMap(result.get("result_data"));
                 this._auth = com.aliyun.teautil.Common.assertAsString(resultData.get("access_token"));
                 return TeaModel.toModel(TeaConverter.merge(Object.class,
